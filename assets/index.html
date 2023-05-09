@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="css/styles.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  </head>
+
+  <body>
+
+    <ul id="dropdown" class="dropdown-content">
+      <li><a class="modal-trigger" href="#modal1">О программе</a></li>
+    </ul>
+
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>О программе</h4>
+        <span>Разработчики: 
+          <br>Гаджимурад Байрамов aka CrIcKeT 
+          <br> Дмитрий Ноунейм aka Onlynoob
+          <p>Контакты
+            <br>Telegram: @cricket98
+            <br>lezgin1998@yandex.ru
+          </p>
+        </span>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close btn-flat">Закрыть</a>
+      </div>
+    </div>
+
+    <div class="navbar-sticky">
+      <nav class="nav-extended blue">
+          <div class="nav-wrapper">
+            <a class="brand-logo center">Driver assistant</a>
+            
+            <!-- Left button -->
+            <ul id="nav-mobile" class="left" style="z-index: 99999;">
+              <li>
+                <a id="nav_back_arrow" style="padding: 0;" class="hide-content">
+                  <i class="fa-solid fa-arrow-left material-icons"></i>
+                </a>
+              </li>
+            </ul>
+            
+            <!-- Right button -->
+            <ul class="right">
+              <li>
+                <a class="dropdown-trigger" data-target="dropdown" style="padding: 0;">
+                  <i class="fa-solid fa-ellipsis-vertical material-icons"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tag input -->
+          <div class="nav-content">
+            <div class="row">
+              <form class="col s12">
+                <div class="input-field col s11">
+                    <textarea placeholder="Введите тег" id="tags" class="materialize-textarea icon-postfix" type="text" maxlength="18"></textarea>
+                    <label for="tags"></label>
+                </div>
+                <div class="input-field col s1" align="right">
+                  <i class="fa-solid fa-magnifying-glass material-icons"></i>
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+     </div>
+
+    <div class="container">
+        <div class="emergency-button-list">
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/emergencyList.js"></script>
+  </body>
+</html>

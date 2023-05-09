@@ -1,0 +1,110 @@
+.navbar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-wrapper ul{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+nav .brand-logo{
+  font-size: 2rem;
+  width: 80%;
+}
+
+.nav-content .row{
+  margin-bottom: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.nav-content .row .col{
+  padding: 0;
+}
+
+.emergency-button-list a {
+    display: block;
+    margin: 12px 0 12px 0;
+}
+
+.action-button-list a {
+  display: block;
+  margin: 6px 0 6px 0;
+}
+
+.input-field ::placeholder {
+  color: #EEEEEE;
+}
+
+/* Bottom line withou focus */
+.nav-content textarea {
+  border-bottom-color: #DDDDDD;
+}
+
+/* Input text */
+.input-field textarea {
+  font-family: Moscow Sans Regular;
+  color: #fff;
+}
+
+/* Bottom line in focus */
+.input-field textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #EEEEEE;
+  box-shadow: 0 1px 0 0 #EEEEEE;
+  color: #EEEEEE;
+}
+
+.dropdown-content{
+  min-width: 50%;
+  top: -100%;
+}
+
+.modal-content h4, .modal-content span{
+  color: #6F6F6F;
+}
+
+.dropdown-content li>a{
+  color: #6F6F6F;
+}
+
+.nav-wrapper{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.emergency-button-list .btn {
+  text-align: left;
+  background-color: #2196f3;
+  height: auto;
+  word-break: break-word;
+
+  font-size: 1.2rem;
+}
+
+.action-button-list .btn {
+  text-align: center;
+  background-color: #9F9F9F;
+  height: auto;
+  word-break: break-word;
+
+  font-size: 1.4rem;
+}
+
+.action-button-list .action-list-arrow{
+  width: 100%;
+  font-size: 2rem;
+  text-align: center;
+  color: #9F9F9F;
+}
+
+.hide-content{
+  display: none;
+}
+
+.container h5{
+  text-align: center;
+  color: #3F3F3F;
+  font-family: Moscow Sans Regular;
+}
