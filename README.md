@@ -2,6 +2,9 @@
 
 _**All the work done was done solely for the sake of obtaining new knowledge and experience.**_
 
+![Main Activity](img/main_activity.png)
+![Action List Activity](img/action_list.png)
+
 ## Improved Skills:
 - **Android**
 - **Kotlin**
