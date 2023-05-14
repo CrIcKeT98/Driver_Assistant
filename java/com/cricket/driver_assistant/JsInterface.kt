@@ -38,20 +38,32 @@ class JsInterface(private val mContext: Context,
 //---------------------------------------------------------------
 
     fun createEmergencyListButton(obj: JSONObject){
-        mWebView.evaluateJavascript("createEmergencyListButton($obj);") {}
+        mWebView.post {
+            mWebView.evaluateJavascript("createEmergencyListButton($obj);") {}
+        }
     }
 
-    fun createActionButton(obj: JSONObject, isLast: Boolean){
-        mWebView.evaluateJavascript("createActionButton($obj, $isLast);") {}
+    fun createActionButton(obj: JSONObject, color: String, isLast: Boolean){
+        mWebView.post {
+            mWebView.evaluateJavascript("createActionButton($obj, \"$color\", $isLast);") {}
+        }
     }
 
     fun setActionListTitle(text: String){
-        mWebView.evaluateJavascript("setActionListTitle(\"$text\");") {}
+        mWebView.post {
+            mWebView.evaluateJavascript("setActionListTitle(\"$text\");") {}
+        }
     }
 
-    fun setActionButtonState(newState: Int){
+    fun setActionButtonColor(id: Int, color: String){
         mWebView.post {
-            mWebView.evaluateJavascript("setActionButtonState($newState);") {}
+            mWebView.evaluateJavascript("setActionButtonColor($id, \"$color\");") {}
+        }
+    }
+
+    fun clearActionButtonList(){
+        mWebView.post {
+            mWebView.evaluateJavascript("clearActionButtonList();") {}
         }
     }
 }

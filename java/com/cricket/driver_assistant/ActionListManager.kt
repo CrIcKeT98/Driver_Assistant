@@ -1,6 +1,7 @@
 package com.cricket.driver_assistant
 
 import android.content.Context
+import android.graphics.Color.red
 import android.util.Log
 import android.widget.Toast
 import java.util.*
@@ -57,13 +58,6 @@ class ActionListManager(
             fillNode(lNode.mRight!!)
     }
 
-    private fun showTree(lNode: TreeNode){
-        if(lNode.mLeft != null) {
-            mJsInterface.createActionButton(lNode.mObj!!, false)
-            showTree(lNode.mLeft!!)
-        }
-    }
-
     private fun findNodeById(id: Int) : TreeNode{
         val lStack = Stack<TreeNode>()
         var lNode: TreeNode? = null
@@ -86,13 +80,55 @@ class ActionListManager(
         return lNode!!
     }
 
+    private fun showTree(lNode: TreeNode){
+        var lIsBinary = lNode.mObj!!.getInt(DbManager.IS_BINARY_COL)
+        var lCurState = lNode.mObj!!.getInt("current_state")
+        var lColor = String()
+
+        if(lCurState == 1)
+            lColor = getColorAsString(R.color.limegreen)
+        else if(lCurState == 2)
+            lColor = getColorAsString(R.color.red)
+
+        mJsInterface.createActionButton(lNode.mObj!!, lColor, false)
+
+        if(lIsBinary == 0 && lNode.mLeft != null)
+            showTree(lNode.mLeft!!)
+        else if(lIsBinary == 1 && lCurState == 1 && lNode.mLeft != null)
+            showTree(lNode.mLeft!!)
+        else if(lIsBinary == 1 && lCurState == 2 && lNode.mRight != null)
+            showTree(lNode.mRight!!)
+    }
+
+    private fun reShowTree(){
+        mJsInterface.clearActionButtonList();
+        showTree(mActionListTree)
+    }
+
     override fun actionButtonListHandler(id: Int){
         val lNode = findNodeById(id)
         var lCurState = lNode.mObj!!.getInt("current_state")
-        lCurState = (lCurState + 1) % 3
-        lNode.mObj!!.put("current_state", lCurState)
+        val lIsBinary = lNode.mObj!!.getInt(DbManager.IS_BINARY_COL)
 
-        Log.d("debug-tag", lCurState.toString())
-        mJsInterface.setActionButtonState(lCurState)
+         if(lIsBinary == 0) {
+             lCurState = ++lCurState % 2
+
+             if(lCurState == 0)
+                mJsInterface.setActionButtonColor(id, "")
+             else
+                 mJsInterface.setActionButtonColor(id, getColorAsString(R.color.limegreen))
+         }
+        else {
+             lCurState = ++lCurState % 3
+             lNode.mObj!!.put("current_state", lCurState)
+             reShowTree()
+             return
+         }
+
+        lNode.mObj!!.put("current_state", lCurState)
+    }
+
+    private fun getColorAsString(id: Int): String{
+        return "#" + Integer.toHexString(mContext.getColor(id) and 0x00ffffff)
     }
 }
